@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216163701) do
+ActiveRecord::Schema.define(version: 20160216164725) do
 
   create_table "games", force: :cascade do |t|
     t.integer  "rate"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 20160216163701) do
   create_table "games_users", id: false, force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,5 +53,15 @@ ActiveRecord::Schema.define(version: 20160216163701) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_roles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "users_roles", ["role_id"], name: "index_users_roles_on_role_id"
+  add_index "users_roles", ["user_id"], name: "index_users_roles_on_user_id"
 
 end

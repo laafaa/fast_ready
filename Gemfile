@@ -50,3 +50,5 @@ gem 'bootstrap-sass'
 gem 'cancan'
 gem 'rails_admin'
 
+gem 'simple_form'
+

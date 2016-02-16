@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
-  get 'pages/home'
-
-  get 'pages/game'
-
-  get 'pages/about'
-
-  get 'pages/contact'
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  root 'welcome#index'
+  root 'pages#home'
+
+  match '/', to: 'pages#home', via: 'get'
+  match '/game', to: 'pages#game', via: 'get'
+  match '/about', to: 'pages#about', via: 'get'
+  match '/contact', to: 'pages#contact', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

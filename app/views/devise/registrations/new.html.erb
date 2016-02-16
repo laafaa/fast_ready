@@ -4,6 +4,8 @@
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
+      <%= f.input :login %>
+      <%= f.input :phone, placeholder: '79000000000', hint: '11 цифр, без +' %>
       <%= f.input :email, placeholder: 'user@domain.com' %>
       <%= f.input :password, hint: 'Минимум 8 символов' %>
       <%= f.button :submit, 'Регистрация' %>

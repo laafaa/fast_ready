@@ -33,10 +33,6 @@ ActiveRecord::Schema.define(version: 20160216175320) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-=======
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -57,7 +53,6 @@ ActiveRecord::Schema.define(version: 20160216175320) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
->>>>>>> 213d59ea853ec768c2436d36947d02a600c4d576
 
   create_table "users_roles", force: :cascade do |t|
     t.integer  "user_id"
@@ -70,3 +65,6 @@ ActiveRecord::Schema.define(version: 20160216175320) do
   add_index "users_roles", ["user_id"], name: "index_users_roles_on_user_id"
 
 end
+
+
+

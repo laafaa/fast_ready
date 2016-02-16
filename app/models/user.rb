@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   validates :phone_number, length: { is: 11, message: " должен содержать 11 цифр"}
   validates :phone_number, numericality: { only_integer: true, message: " должен содержать только цифры" }
   validates :phone_number, :login, uniqueness: { is: true, message: " уже используется"}
+
+  
 end

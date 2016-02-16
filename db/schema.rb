@@ -65,3 +65,6 @@ ActiveRecord::Schema.define(version: 20160216175320) do
   add_index "users_roles", ["user_id"], name: "index_users_roles_on_user_id"
 
 end
+
+
+

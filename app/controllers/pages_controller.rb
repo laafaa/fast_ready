@@ -24,6 +24,9 @@ class PagesController < ApplicationController
       if (@game.users.count)<=9
         @proverka = @game.users.where('user_id = ?', current_user.id)
         if @proverka.count == 0
+          @minus = User.find_by("id = ?", (current_user.id))
+          @summa = (current_user.balance)-(@game.rate)
+          @minus.update_attribute(:balance, @summa)
           @game.users.push current_user
           flash[:add] = "Vi zaregalis"
         else        

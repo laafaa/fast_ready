@@ -7,7 +7,7 @@
 <% @games.each do |g| %>
 		<p>Rate: <%= g.rate %></p>
 		<p>Players: 
-			<% g.users.find_by('game_id = ?', g.id) do |gu|%>
+			<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
 				<%= gu.login %>
 			<% end %></p>
 		<% if user_signed_in? %>

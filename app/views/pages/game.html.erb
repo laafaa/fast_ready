@@ -1,13 +1,16 @@
 <h1>Pages#game</h1>
 <p>Find me in app/views/pages/game.html.erb</p>
+<p style = "color: red"><%= flash[:zero_balance] %></p>
+<p style = "color: green"><%= flash[:add] %></p>
+<p style = "color: red"><%= flash[:not_add] %></p>
 
 <% @games.each do |g| %>
-	<p>Rate: <%= g.rate %></p>
-	<p>Players: 
-		<% g.users.find_by('game_id = ?', g.id) do |gu|%>
-			<%= gu.login %>
-		<% end %></p>
-	<% if user_signed_in? %>
-		<button>Play</button>	
-	<% end %>	
+		<p>Rate: <%= g.rate %></p>
+		<p>Players: 
+			<% g.users.find_by('game_id = ?', g.id) do |gu|%>
+				<%= gu.login %>
+			<% end %></p>
+		<% if user_signed_in? %>
+			<%= button_to "Play",  {action: 'add_player', id_game: g.id}, method: :post %> 
+		<% end %>	
 <% end %>

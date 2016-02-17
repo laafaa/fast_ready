@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   match '/', to: 'pages#home', via: 'get'
   match '/game', to: 'pages#game', via: 'get'
+  match '/add_player', to: 'pages#add_player', via: 'post'
   match '/about', to: 'pages#about', via: 'get'
   match '/contact', to: 'pages#contact', via: 'get'
   match '/profile', to: 'pages#profile', via: 'get'

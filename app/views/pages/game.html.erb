@@ -1,2 +1,13 @@
 <h1>Pages#game</h1>
 <p>Find me in app/views/pages/game.html.erb</p>
+
+<% @games.each do |g| %>
+	<p>Rate: <%= g.rate %></p>
+	<p>Players: 
+		<% g.users.find_by('game_id = ?', g.id) do |gu|%>
+			<%= gu.login %>
+		<% end %></p>
+	<% if user_signed_in? %>
+		<button>Play</button>	
+	<% end %>	
+<% end %>

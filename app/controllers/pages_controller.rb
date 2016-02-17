@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   end
 
   def game
+  	@games = Game.all
   end
 
   def about

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :users_roles
   has_many :roles, :through => :users_roles
+  has_many :user_transactions
   has_and_belongs_to_many :games
   validates :login, :phone, :email, :password, presence: true
   
@@ -13,6 +14,4 @@ class User < ActiveRecord::Base
   validates :phone, numericality: { only_integer: true, message: " должен содержать только цифры" }
   validates :phone, :login, uniqueness: { is: true, message: " уже используется"}
 
-
-  
 end

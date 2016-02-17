@@ -1,1 +1,35 @@
-<%= @user.email %>
+<div class="container">
+	<h2>Профиль</h2>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<span class="glyphicon glyphicon-user" aria-hidden="true">
+			   	 	<%= current_user.login%></span>
+			   	</h3>
+				</div>
+					<ul class="list-group">
+					 <li class="list-group-item">
+			   	 	<span class="glyphicon glyphicon-inbox" aria-hidden="true">
+			   	 		<%= current_user.email%></span>
+			   	 </li>
+			   	 <li class="list-group-item">
+			   	  <span class="glyphicon glyphicon-phone" aria-hidden="true">
+			   	 		<%= current_user.phone%></span>
+			   	 </li>
+			   	</ul>
+		  </div>
+		</div>
+		<div class="col-md-8">
+			<div>
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active"><a href="#game" aria-controls="game" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-rub" aria-hidden="true"></span> Розыгрыши</a></li>
+			    <li role="presentation"><a href="#trans" aria-controls="trans" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Транзакции</a></li>
+			  </ul>
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+			    <div role="tabpanel" class="tab-pane" id="trans">...</div>
+			  </div>
+			</div>
+		</div>
+</div>

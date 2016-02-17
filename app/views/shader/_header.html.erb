@@ -11,17 +11,39 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to 'Начать', game_path%></li>
-            <li><%= link_to 'О нас', about_path%></li>
-            <li><%= link_to 'Контакты', contact_path%></li>
+            <li>
+              <%= link_to 'Начать', game_path %>
+            </li>
+            <li>
+              <%= link_to 'О нас', about_path %>
+            </li>
+            <li>
+              <%= link_to 'Контакты', contact_path %>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <li><%= link_to 'Профиль'  %></li>
-              <li><%= link_to 'Выход', destroy_user_session_path, method: :delete %></li>
+              <li>
+                  <%= link_to profile_path do %>
+                  <span class="glyphicon glyphicon-user"></span> Профиль
+                  <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="glyphicon glyphicon-log-out"></span> Выход
+                <% end %>
+              </li>
             <% else %>
-              <li><%= link_to 'Регистрация', new_user_registration_path %></li>
-              <li><%= link_to 'Вход', new_user_session_path %></li>
+              <li>
+              <%= link_to new_user_registration_path do %>
+                  <span class="glyphicon glyphicon-expand"></span> Регистрация
+              <% end %>
+              </li>
+              <li>
+              <%= link_to new_user_session_path do %>
+                  <span class="glyphicon glyphicon-log-in"></span> Вход
+              <% end %>
+              </li>
           <% end %>
           </ul>
         </div><!--/.nav-collapse -->

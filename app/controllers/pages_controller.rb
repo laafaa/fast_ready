@@ -44,7 +44,6 @@ class PagesController < ApplicationController
   end
 
   def profile
-  	@user = User.all
   end
 
   #private

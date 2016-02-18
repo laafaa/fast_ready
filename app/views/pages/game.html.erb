@@ -1,16 +1,25 @@
-<h1>Pages#game</h1>
-<p>Find me in app/views/pages/game.html.erb</p>
 <p style = "color: red"><%= flash[:zero_balance] %></p>
 <p style = "color: green"><%= flash[:add] %></p>
 <p style = "color: red"><%= flash[:not_add] %></p>
 
-<% @games.each do |g| %>
-		<p>Rate: <%= g.rate %></p>
-		<p>Players: 
-			<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
-				<%= gu.login %>
-			<% end %></p>
-		<% if user_signed_in? %>
-			<%= button_to "Play",  {action: 'add_player', id_game: g.id}, method: :post %> 
-		<% end %>	
-<% end %>
+
+<div class="container" >
+	<div class="row">
+		<% @games.each do |g| %>
+		<div class="col-md-4" >
+			<div class="panel panel-default " style="height: 300px !important">
+				<div class="panel-heading">
+					<h3 class="panel-title">Rate: <%= g.rate %></h3>
+				</div>
+				<p class="text-center">Players:</p> 
+					<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
+						<%= gu.login %>
+							<% end %>
+					<% if user_signed_in? %>
+						<div><%= button_to "Play",  {action: 'add_player', id_game: g.id}, method: :post %></div>
+					<% end %>	
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

@@ -6,20 +6,30 @@
 <div class="container" >
 	<div class="row">
 		<% @games.each do |g| %>
-		<div class="col-md-4" >
-			<div class="panel panel-default " style="height: 300px !important">
-				<div class="panel-heading">
-					<h3 class="panel-title">Rate: <%= g.rate %></h3>
+			<% if (g.users.count)<=9 %>
+				<div class="col-md-4" >
+					<div class="panel panel-default " style="height: 300px !important">
+						<div class="panel-heading">
+							<h3 class="panel-title">Rate: <%= g.rate %></h3>
+						</div>
+						<div class="panel-heading">
+							<h3 class="panel-title">Winner: 
+							<% if (g.winner) == nil %>
+								еще не определен
+							<% else %>
+								<%= (@users.find_by('id = ?', (g.winner))).login %>
+							<% end %></h3>
+						</div>
+						<p class="text-center">Players:</p> 
+						<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
+							<%= gu.login %>
+						<% end %>
+						<% if user_signed_in? %>
+							<div><%= button_to "Play",  {action: 'add_player', id_game: g.id}, method: :post %></div>
+						<% end %>	
+					</div>
 				</div>
-				<p class="text-center">Players:</p> 
-					<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
-						<%= gu.login %>
-							<% end %>
-					<% if user_signed_in? %>
-						<div><%= button_to "Play",  {action: 'add_player', id_game: g.id}, method: :post %></div>
-					<% end %>	
-				</div>
-			</div>
+			<% end %>
 		<% end %>
 	</div>
 </div>

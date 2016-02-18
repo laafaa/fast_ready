@@ -5,17 +5,17 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<span class="glyphicon glyphicon-user" aria-hidden="true">
-			   	 	<%= current_user.login%></span>
+			   	 	<%= current_user.login %></span>
 			   	</h3>
 				</div>
 					<ul class="list-group">
 					 <li class="list-group-item">
 			   	 	<span class="glyphicon glyphicon-inbox" aria-hidden="true">
-			   	 		<%= current_user.email%></span>
+			   	 		<%= current_user.email %></span>
 			   	 </li>
 			   	 <li class="list-group-item">
 			   	  <span class="glyphicon glyphicon-phone" aria-hidden="true">
-			   	 		<%= current_user.phone%></span>
+			   	 		<%= current_user.phone %></span>
 			   	 </li>
 			   	</ul>
 		  </div>
@@ -27,8 +27,12 @@
 			    <li role="presentation"><a href="#trans" aria-controls="trans" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Транзакции</a></li>
 			  </ul>
 			  <div class="tab-content">
-			    <div role="tabpanel" class="tab-pane active" id="home">...</div>
-			    <div role="tabpanel" class="tab-pane" id="trans">...</div>
+			    <div role="tabpanel" class="tab-pane active" id="home">
+			    	<%= render 'profile_game' %>
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="trans">
+			    	<%= render 'profile_transaction' %>
+			    </div>
 			  </div>
 			</div>
 		</div>

@@ -1,12 +1,12 @@
 class PagesController < ApplicationController
 
-  #skip_before_filter :verify_authenticity_token, :only => [:proverka]
+  before_filter :find_games, :only => [:profile, :game]
 
   def home
   end
 
   def game
-  	@games = Game.all
+    @users = User.all
   end
 
   def about
@@ -36,8 +36,9 @@ class PagesController < ApplicationController
       if (@game.users.count)==10
         @rand = (rand(1..10))-1
         @winner = User.find_by(id: (@game.user_ids[@rand]))
-        @update = @game.update_attributes(winner: @winner.login)
-        @winner.update_attributes(balance: (@game.rate)*10)
+        @update = @game.update_attribute(:winner, @winner.id)
+        @win_mon = ((@game.rate)*10) + (@winner.balance)
+        @winner.update_attribute(:balance, @win_mon)
         Game.create(rate: @game.rate)
         redirect_to game_path  
       else
@@ -47,10 +48,15 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @played_games = current_user.games.where('winner = ?', current_user.id)
+    #@games.users.where('winner = ?', current_user.id)
+    @transactions = UserTransaction.all
   end
 
-  #private
-  #  def add_player_params
-  #    params.require[].permit[:id]      
-  #  end
+  private
+
+    def find_games
+      @games = Game.all      
+    end
+
 end

@@ -48,7 +48,7 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @played_games = current_user.games.where('winner = ?', current_user.id)
+    @played_games = current_user.games.where('user_id = ?', current_user.id)
     @transactions = UserTransaction.where('user_id = ?', current_user.id)
   end
 

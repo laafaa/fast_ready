@@ -1,1 +1,21 @@
-///
+<table border = "1">
+	<tr>
+		<td> Дата </td>
+		<td> Время </td>
+		<td> Сумма </td>
+	</tr>
+	<% @transactions.each do |t| %>
+		<tr>
+			<th> <%= t.created_at.strftime("%d/%m/%Y") %> </th>
+			<th> <%= t.created_at.strftime("%H:%M:%S") %> </th>
+			<th> <%= t.sum %> </th>
+			<th> 
+				<% if (t.satisfy) == false %>
+					Не выполнен
+				<% else %>
+					Выполнен
+				<% end %> 
+			</th>
+		</tr>
+	<% end %>
+</table>

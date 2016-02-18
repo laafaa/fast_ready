@@ -1,28 +1,33 @@
-<p>Сыграно игр: <%= @played_games.count %></p>
-			    	
-<table border = "1">
-	<tr>
-		<td> Дата </td>
-		<td> Время </td>
-		<td> Сумма ставки </td>
-		<td> Выплата </td>
-	</tr>
-	<% @played_games.each do |pg| %>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			Сыграно игр: <%= @played_games.count %>
+		</h3>
+	</div>
+	<table class="table table-bordered">
 		<tr>
-			<th> <%= pg.created_at.strftime("%d/%m/%Y") %> </th>
-			<th> <%= pg.created_at.strftime("%H:%M:%S") %> </th>
-			<th> <%= pg.rate %> </th>
-			<th> 
-				<% if (pg.winner) == nil %>
-					Не разыгран
-				<% else %>
-					<% if (pg.winner) == (current_user.id) %>
-						<%= (pg.rate)*10 %> rub
-					<% else %>
-						0 rub
-					<% end %>
-				<% end %> 
-			</th>
+			<td> Дата </td>
+			<td> Время </td>
+			<td> Сумма ставки </td>
+			<td> Выплата </td>
 		</tr>
-	<% end %>
-</table>
+		<% @played_games.each do |pg| %>
+			<tr>
+				<th> <%= pg.created_at.strftime("%d/%m/%Y") %> </th>
+				<th> <%= pg.created_at.strftime("%H:%M:%S") %> </th>
+				<th> <%= pg.rate %> </th>
+				<th> 
+					<% if (pg.winner) == nil %>
+						Не разыгран
+					<% else %>
+						<% if (pg.winner) == (current_user.id) %>
+							<%= (pg.rate)*10 %> rub
+						<% else %>
+							0 rub
+						<% end %>
+					<% end %> 
+				</th>
+			</tr>
+		<% end %>
+	</table>
+</div>

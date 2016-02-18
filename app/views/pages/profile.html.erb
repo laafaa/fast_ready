@@ -17,8 +17,19 @@
 			   	  <span class="glyphicon glyphicon-phone" aria-hidden="true">
 			   	 		<%= current_user.phone %></span>
 			   	 </li>
-			   	</ul>
+			   	 <li class="list-group-item">
+			   	  <span class="glyphicon glyphicon-credit-card" aria-hidden="true">
+			   	 		Баланс <%= current_user.balance %></span>
+			   	 </li>
+			  	</ul>
 		  </div>
+		  	<ul class="list-group">
+			   	<li class="list-group-item">
+            <%= link_to profile_path do %>
+             	<span class="glyphicon glyphicon-cog"></span> Редактировать
+            <% end %>
+          </li>
+			  </ul>
 		</div>
 		<div class="col-md-8">
 			<div>

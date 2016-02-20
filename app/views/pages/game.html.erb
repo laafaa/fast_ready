@@ -19,22 +19,22 @@
 
   		<div class="jumbotron">
     		<h2 class="text-center">Как проходит мгновенная лотерея</h2>
-    		<p>Мгновенная лотерея может состоять из 10 человек. После того как набирается 10 человек, розыгрышь начинается автоматически. Система выбирает случайным образом победителя. Отследить выбор победителя можно в онлайн режиме, после выбора победителя, выйгрыш начисляется на аккаунт победителя.</p>
+    		<p>Мгновенная лотерея может состоять из 10 человек. После того как набирается 10 человек, розыгрыш начинается автоматически. Система выбирает случайным образом победителя. Отследить выбор победителя можно в онлайн режиме, после выбора победителя, выйгрыш начисляется на аккаунт победителя.</p>
   		</div>
 
-  		<div>
+  		<div class="container">
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#active" aria-controls="active" role="tab" data-toggle="tab"><span class="" aria-hidden="true"></span> Активные игры </a></li>
           <li role="presentation"><a href="#end" aria-controls="end" role="tab" data-toggle="tab"><span class="" aria-hidden="true"></span> Завершенные игры</a></li>
         </ul>
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="active">
-            <div class="row">
+            <div class="row" id="game_pad">
               <%= render "shader/game_active" %>
             </div>
           </div>
           <div role="tabpanel" class="tab-pane" id="end">
-            <div class="row">
+            <div class="row" id="game_pad">
               <%= render "shader/game_end" %>
             </div>
           </div>
@@ -50,4 +50,5 @@
 				</div>
 		</div>
   <% end %>
+  </div>
 </div>

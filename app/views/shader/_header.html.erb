@@ -23,6 +23,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
+             <li>
+              <%= link_to profile_path do %>
+                <span class="glyphicon glyphicon-credit-card"></span> Баланс 
+                <%= current_user.balance %>
+              <% end %>
+              </li>
               <li>
                   <%= link_to profile_path do %>
                   <span class="glyphicon glyphicon-user"></span> Профиль

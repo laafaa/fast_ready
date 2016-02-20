@@ -3,7 +3,7 @@
     <h2>Регистрация</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+      <%= f.error_notification %>
       <%= f.input :login, placeholder: 'Login' %>
       <%= f.input :phone, hint: 'Номер телефона должен содержать 11 цифр' %>
       <%= f.input :email, placeholder: 'user@domain.com' %>

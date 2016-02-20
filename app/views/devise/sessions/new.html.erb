@@ -2,6 +2,7 @@
   <div class="col-md-5 col-md-push-3">
     <h2>Вход</h2>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
       <%= f.input :email, placeholder: 'user@domain.com' %>
       <%= f.input :password %>
       <%= f.check_box :remember_me %>

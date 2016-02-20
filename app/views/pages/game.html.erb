@@ -1,20 +1,53 @@
 <div class="container">
-	<div>
-  		<ul class="nav nav-tabs" role="tablist">
-    		<li role="presentation" class="active"><a href="#active" aria-controls="active" role="tab" data-toggle="tab"><span class="" aria-hidden="true"></span> Активные игры </a></li>
-    		<li role="presentation"><a href="#end" aria-controls="end" role="tab" data-toggle="tab"><span class="" aria-hidden="true"></span> Завершенные игры</a></li>
-  		</ul>
-  		<div class="tab-content">
-    		<div role="tabpanel" class="tab-pane active" id="active">
-    			<div class="row">
-    				<%= render "shader/game_active" %>
-    			</div>
-    		</div>
-	    	<div role="tabpanel" class="tab-pane" id="end">
-	    		<div class="row">
-	    			<%= render "shader/game_end" %>
-	    		</div>
-	    	</div>
+  <% if user_signed_in? %>
+  	<div class="row">
+  		<% if flash[:zero_balance]%>
+  			<div class="alert alert-danger" role="alert">
+  				<%= flash[:zero_balance]%>
+  			</div>
+  		<% end %>
+  		<% if flash[:add]%>
+  			<div class="alert alert-success" role="alert">
+  				<%= flash[:add]%>
+  			</div>
+  		<% end %>
+  		<% if flash[:not_add]%>
+  			<div class="alert alert-warning" role="alert">
+  				<%= flash[:not_add]%>
+  			</div>
+  		<% end %>
+
+  		<div class="jumbotron">
+    		<h2 class="text-center">Как проходит мгновенная лотерея</h2>
+    		<p>Мгновенная лотерея может состоять из 10 человек. После того как набирается 10 человек, розыгрышь начинается автоматически. Система выбирает случайным образом победителя. Отследить выбор победителя можно в онлайн режиме, после выбора победителя, выйгрыш начисляется на аккаунт победителя.</p>
   		</div>
-	</div>	
+
+  		<div>
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#active" aria-controls="active" role="tab" data-toggle="tab"><span class="" aria-hidden="true"></span> Активные игры </a></li>
+          <li role="presentation"><a href="#end" aria-controls="end" role="tab" data-toggle="tab"><span class="" aria-hidden="true"></span> Завершенные игры</a></li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="active">
+            <div class="row">
+              <%= render "shader/game_active" %>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="end">
+            <div class="row">
+              <%= render "shader/game_end" %>
+            </div>
+          </div>
+        </div>
+  	</div>
+  <% else %>
+		<div class="jumbotron">
+			<h1 class="text-center">Пройдите регистрацию, либо войдите в свой аккаунт.</h1>
+			<p class="text-center">Участвовать в лотерее могут только зарегистрированные пользователи, пожалуйста зарегистрируйтесь либо войдите в свой аккаунт.</p>
+				<div class="text-center">
+					<%= link_to 'Регистрация', new_user_registration_path, class: "btn btn-primary" %>
+		      <%= link_to 'Вход', new_user_session_path, class: "btn btn-success" %>
+				</div>
+		</div>
+  <% end %>
 </div>

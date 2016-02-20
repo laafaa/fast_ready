@@ -1,18 +1,3 @@
-<% if flash[:zero_balance]%>
-	<div class="alert alert-danger" role="alert">
-		<%= flash[:zero_balance]%>
-	</div>
-<% end %>
-<% if flash[:add]%>
-	<div class="alert alert-success" role="alert">
-		<%= flash[:add]%>
-	</div>
-<% end %>
-<% if flash[:not_add]%>
-	<div class="alert alert-warning" role="alert">
-		<%= flash[:not_add]%>
-	</div>
-<% end %>
 <% @games.each do |g| %>
 	<% if (g.users.count)<=9 %>
 		<div class="col-md-4" >

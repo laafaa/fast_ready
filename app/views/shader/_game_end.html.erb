@@ -1,0 +1,25 @@
+<% @games.each do |g| %>
+	<% if (g.users.count)>=10 %>
+		<div class="col-md-4" >
+			<div class="panel panel-default" id="new_game">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ставка: <%= g.rate %> rub</h3>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item">
+		   	 			<span class="glyphicon glyphicon-king" aria-hidden="true">
+		   	 				Победитель: <%= (@users.find_by('id = ?', (g.winner))).login %></span>
+			   		</li>
+			   		<li class="list-group-item">
+			   			<span class="" aria-hidden="true">
+							Участники:
+									<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
+											<%=gu.id%><%= gu.login %>
+							<% end %>
+						</span>
+					</li>
+				</ul>		
+			</div>
+		</div>
+	<% end %>
+<% end %>

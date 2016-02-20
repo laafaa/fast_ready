@@ -1,12 +1,11 @@
 class PagesController < ApplicationController
 
-  before_filter :find_games, :only => [:profile, :game]
-
   def home
   end
 
   def game
     @users = User.all
+    @games = (Game.order(:rate)).all  
   end
 
   def about
@@ -50,12 +49,7 @@ class PagesController < ApplicationController
   def profile
     @played_games = current_user.games.where('user_id = ?', current_user.id)
     @transactions = UserTransaction.where('user_id = ?', current_user.id)
+    @games = Game.all
   end
-
-  private
-
-    def find_games
-      @games = Game.all      
-    end
 
 end

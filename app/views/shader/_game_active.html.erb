@@ -1,0 +1,43 @@
+<% if flash[:zero_balance]%>
+	<div class="alert alert-danger" role="alert">
+		<%= flash[:zero_balance]%>
+	</div>
+<% end %>
+<% if flash[:add]%>
+	<div class="alert alert-success" role="alert">
+		<%= flash[:add]%>
+	</div>
+<% end %>
+<% if flash[:not_add]%>
+	<div class="alert alert-warning" role="alert">
+		<%= flash[:not_add]%>
+	</div>
+<% end %>
+<% @games.each do |g| %>
+	<% if (g.users.count)<=9 %>
+		<div class="col-md-4" >
+			<div class="panel panel-default" id="new_game">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ставка: <%= g.rate %> rub</h3>
+				</div>
+				<ul class="list-group">
+			   		<li class="list-group-item">
+			   			<span class="" aria-hidden="true">
+							Участники:
+								<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
+									<%= gu.login %>
+							<% end %>
+						</span>
+					</li>
+					<li class="list-group-item">
+			   			<span class="" aria-hidden="true">
+							<% if user_signed_in? %>
+								<%= button_to "Участвовать",  {action: 'add_player', id_game: g.id }, method: :post, :class=>"btn btn-success btn-block"%>
+							<% end %>
+						</span>
+					</li>
+				</ul>	
+			</div>
+		</div>
+	<% end %>
+<% end %>

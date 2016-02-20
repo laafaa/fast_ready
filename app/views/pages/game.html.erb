@@ -1,43 +1,20 @@
 <div class="container">
-	<div class="row">
-		<% if flash[:zero_balance]%>
-			<div class="alert alert-danger" role="alert">
-				<%= flash[:zero_balance]%>
-			</div>
-		<% end %>
-		<% if flash[:add]%>
-			<div class="alert alert-success" role="alert">
-				<%= flash[:add]%>
-			</div>
-		<% end %>
-		<% if flash[:not_add]%>
-			<div class="alert alert-warning" role="alert">
-				<%= flash[:not_add]%>
-			</div>
-		<% end %>
-		<% @games.each do |g| %>
-			<% if (g.users.count)<=9 %>
-				<div class="col-md-4" >
-					<div class="panel panel-default" id="new_game">
-						<div class="panel-heading">
-							<h3 class="panel-title">Rate: <%= g.rate %></h3>
-						</div>
-						Winner: 
-							<% if (g.winner) == nil %>
-								еще не определен
-							<% else %>
-								<%= (@users.find_by('id = ?', (g.winner))).login %>
-							<% end %>
-						<p class="text-center">Участники:</p> 
-						<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
-							<%= gu.login %>
-						<% end %>
-						<% if user_signed_in? %>
-							<%= button_to "Участвовать",  {action: 'add_player', id_game: g.id }, method: :post, :class=>"btn btn-success btn-block"%>
-						<% end %>	
-					</div>
-				</div>
-			<% end %>
-		<% end %>
-	</div>
+	<div>
+  		<ul class="nav nav-tabs" role="tablist">
+    		<li role="presentation" class="active"><a href="#active" aria-controls="active" role="tab" data-toggle="tab"><span class="" aria-hidden="true"></span> Активные игры </a></li>
+    		<li role="presentation"><a href="#end" aria-controls="end" role="tab" data-toggle="tab"><span class="" aria-hidden="true"></span> Завершенные игры</a></li>
+  		</ul>
+  		<div class="tab-content">
+    		<div role="tabpanel" class="tab-pane active" id="active">
+    			<div class="row">
+    				<%= render "shader/game_active" %>
+    			</div>
+    		</div>
+	    	<div role="tabpanel" class="tab-pane" id="end">
+	    		<div class="row">
+	    			<%= render "shader/game_end" %>
+	    		</div>
+	    	</div>
+  		</div>
+	</div>	
 </div>

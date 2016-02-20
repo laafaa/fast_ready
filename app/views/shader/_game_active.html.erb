@@ -3,11 +3,16 @@
 		<div class="col-md-4" >
 			<div class="panel panel-default" id="new_game">
 				<div class="panel-heading">
-					<h3 class="panel-title">Ставка: <%= g.rate %> rub</h3>
+					<h3 class="panel-title">Игра №<%= g.id %></h3>
 				</div>
 				<ul class="list-group">
+					<li class="list-group-item">
+			   			<span aria-hidden="true">
+							Ставка: <%= g.rate %> rub
+						</span>
+					</li>
 			   		<li class="list-group-item">
-			   			<span class="" aria-hidden="true">
+			   			<span aria-hidden="true">
 							Участники:
 								<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
 									<%= gu.login %>
@@ -15,10 +20,8 @@
 						</span>
 					</li>
 					<li class="list-group-item">
-			   			<span class="" aria-hidden="true">
-							<% if user_signed_in? %>
-								<%= button_to "Участвовать",  {action: 'add_player', id_game: g.id }, method: :post, :class=>"btn btn-success btn-block"%>
-							<% end %>
+			   			<span aria-hidden="true">
+							<%= button_to "Участвовать",  {action: 'add_player', id_game: g.id }, method: :post, :class => "btn btn-success btn-block"%>
 						</span>
 					</li>
 				</ul>	

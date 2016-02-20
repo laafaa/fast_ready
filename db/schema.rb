@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217085429) do
+ActiveRecord::Schema.define(version: 20160220215320) do
 
   create_table "games", force: :cascade do |t|
     t.integer  "rate"
@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(version: 20160217085429) do
   create_table "user_transactions", force: :cascade do |t|
     t.integer  "user_id"
     t.float    "sum"
-    t.boolean  "satisfy",    default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "satisfy",     default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "description"
   end
 
   create_table "users", force: :cascade do |t|

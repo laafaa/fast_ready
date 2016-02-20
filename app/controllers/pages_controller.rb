@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   def add_player
     @game = Game.find_by(id: params[:id_game])
     if (current_user.balance)<(@game.rate)
-      flash[:zero_balance] = "Popolnite balans"
+      flash[:zero_balance] = "Пополните баланс!"
       redirect_to game_path
     else
       if (@game.users.count)<=9
@@ -28,9 +28,9 @@ class PagesController < ApplicationController
           @summa = (current_user.balance)-(@game.rate)
           @minus.update_attribute(:balance, @summa)
           @game.users.push current_user
-          flash[:add] = "Vi zaregalis"
+          flash[:add] = "Вы зарегистрировались. Удачи!"
         else        
-          flash[:not_add] = "Vi uze uchavsvuete"
+          flash[:not_add] = "Вы уже участвуете."
         end
       end
       if (@game.users.count)==10

@@ -7,23 +7,21 @@
 				</div>
 				<ul class="list-group">
 					<li class="list-group-item">
-			   			<span aria-hidden="true">
 							Ставка: <%= g.rate %> rub
-						</span>
 					</li>
 			   		<li class="list-group-item">
-			   			<span aria-hidden="true">
 							Участники:
 								<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
 									<%= gu.login %>
 							<% end %>
-						</span>
 					</li>
-					<li class="list-group-item">
-			   			<span aria-hidden="true">
-							<%= button_to "Участвовать",  {action: 'add_player', id_game: g.id }, method: :post, :class => "btn btn-success btn-block" %>
-						</span>
-					</li>
+					<% if (g.users.where('user_id = ?', current_user.id)).count == 0 %>
+						<li class="list-group-item">
+							<%= button_to "Учавствовать",  {action: 'add_player', id_game: g.id }, method: :post, :class => "btn btn-success btn-block" %>
+						</li>
+					<% else %>
+						<li class="list-group-item list-group-item-danger text-center">Вы уже учавствуете</li>
+					<% end %>
 				</ul>	
 			</div>
 		</div>

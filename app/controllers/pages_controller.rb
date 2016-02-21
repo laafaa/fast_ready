@@ -42,8 +42,6 @@ class PagesController < ApplicationController
           Game.create(rate: @game.rate)
           UserTransaction.create(user_id: @winner.id, sum: @game.rate, satisfy: true, description: "пополнение с игры")
           redirect_to game_path 
-        else
-          redirect_to game_path
         end
       else
         flash[:not_add] = "Вы уже участвуете."

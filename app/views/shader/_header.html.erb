@@ -23,11 +23,14 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-             <li>
-              <%= link_to profile_path do %>
-                <span class="glyphicon glyphicon-credit-card"></span> Баланс: 
-                <%= current_user.balance %> rub
-              <% end %>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-credit-card"></span> Баланс: <%= current_user.balance %> rub <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Пополнить</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Снять</a></li>
+                </ul>
               </li>
               <li>
                   <%= link_to profile_path do %>

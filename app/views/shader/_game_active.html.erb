@@ -10,15 +10,13 @@
 							Ставка: <%= g.rate %> rub
 					</li>
 			   		<li class="list-group-item">
-							Участники:
-								<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
-									<%= gu.login %>
+						Участники:
+							<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
+								<%= gu.login %>
 							<% end %>
 					</li>
 					<% if (g.users.where('user_id = ?', current_user.id)).count == 0 %>
-						<li class="list-group-item">
-							<%= button_to "Учавствовать",  {action: 'add_player', id_game: g.id }, method: :post, :class => "btn btn-success btn-block" %>
-						</li>
+						<%= link_to "Учавствовать",  {action: 'add_player', id_game: g.id }, method: :post, :class => "list-group-item list-group-item-success text-center" %>
 					<% else %>
 						<li class="list-group-item list-group-item-danger text-center">Вы уже учавствуете</li>
 					<% end %>

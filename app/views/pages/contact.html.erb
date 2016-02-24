@@ -1,3 +1,23 @@
 <div class="container">
-	<h2>Контакты</h2>
+	<h2>Обратная связь</h2>
+	<div class="input-group">
+		<span class="input-group-addon" id="basic-addon1">E-mail</span>
+		<% if user_signed_in? %>
+			<input type="text" class="form-control" value=<%=current_user.email%> aria-describedby="basic-addon1" required></input>
+		<% else %>
+			<input type="text" class="form-control" placeholder="examlpe@example.com" aria-describedby="basic-addon1" required></input>
+		<% end %>
+  	</div>
+  	<br/>
+  	<div class="input-group">
+		<span class="input-group-addon" id="basic-addon1">Тема сообщения</span>
+  		<input type="text" class="form-control" aria-describedby="basic-addon1" required></input>
+  	</div>
+  	<br/>
+  	<div class="input-group">
+		<span class="input-group-addon" id="basic-addon1">Текст сообщения</span>
+  		<input type="text" class="form-control" aria-describedby="basic-addon1" required></input>
+  	</div>
+  	<br/>
+  	<input type="submit" value="Отправить">
 </div>

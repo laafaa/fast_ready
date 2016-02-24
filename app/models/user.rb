@@ -9,12 +9,12 @@ class User < ActiveRecord::Base
   has_many :user_transactions
   has_and_belongs_to_many :games
   
-  validates :login, :phone, :email, :password, presence: true
+  validates :login, :phone, :email, :password, :presence => {message: "Не может быть пустым"}
   
   validates :phone, length: { is: 11, 
     message: " должен содержать 11 цифр"}
   validates :phone, numericality: { only_integer: true, 
     message: " должен содержать только цифры" }
   validates :phone, :login, :email, uniqueness: { is: true, 
-    message: " уже используется"}
+    message: "Уже используется"}
 end

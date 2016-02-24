@@ -52,3 +52,4 @@ gem 'rails_admin'
 
 gem 'simple_form'
 
+

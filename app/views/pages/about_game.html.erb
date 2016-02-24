@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="col-md-4" >
+		<ul class="list-group">
+			<li class="list-group-item">
+				<h3 class="panel-title">Игра №<%= @game.id %></h3>
+			</li>
+			<li class="list-group-item">
+					Ставка: <%= @game.rate %> rub
+			</li>
+			<% if (@game.users.count)<=9 %>
+		   		<li class="list-group-item">
+					Участники: <%= (@game.users.count) %>/10
+					<div class="progress">
+					  <div div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow=<%= (@game.users.count)*10 %> aria-valuemin="0" aria-valuemax="100" style="width: <%= (@game.users.count)*10 %>%">
+					    <span class="sr-only"><%= (@game.users.count)*10 %>% Complete (success)</span>
+					  </div>
+					</div>
+				</li>
+			<% else %>
+				<li class="list-group-item">
+					Победитель
+				</li>
+			<% end %>
+			<li class="list-group-item">
+				Участники: 
+				<ol>
+					<% (@game.users.where('game_id = ?', @game.id)).each do |gu|%>
+						<li><%= gu.login %></li>
+					<% end %>
+				</ol>
+			</li>
+			<% if (@game.users.count)<=9 %>
+				<% if (@game.users.where('user_id = ?', current_user.id)).count == 0 %>
+					<%= link_to "Учавствовать",  {action: 'add_player', id_game: g.id }, method: :post, :class => "list-group-item list-group-item-success text-center" %>
+				<% else %>
+					<li class="list-group-item list-group-item-danger text-center">Вы уже учавствуете</li>
+				<% end %>
+			<% end %>
+		</ul>	
+	</div>
+</div>

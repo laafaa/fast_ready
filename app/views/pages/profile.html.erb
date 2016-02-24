@@ -1,34 +1,35 @@
 <div class="container">
-	<h2>Профиль</h2>
+	<% if user_signed_in? %>
+		<h2>Профиль</h2>
 		<div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<span class="glyphicon glyphicon-user" aria-hidden="true">
 			   	 			<%= current_user.login %></span>
-			   		</h3>
+			   	</h3>
 				</div>
 				<ul class="list-group">
 					<li class="list-group-item">
-		   	 			<span class="glyphicon glyphicon-envelope" aria-hidden="true">
-		   	 				<%= current_user.email %></span>
-			   		</li>
-			   		<li class="list-group-item">
-			   	  		<span class="glyphicon glyphicon-phone" aria-hidden="true">
-			   	 			<%= current_user.phone %></span>
-			   	 	</li>
-			   		<li class="list-group-item">
-			   			<span class="glyphicon glyphicon-credit-card" aria-hidden="true">
-			   	 			Баланс: <%= current_user.balance %> rub</span>
-			   	 	</li>
-			  	</ul>
+	   	 			<span class="glyphicon glyphicon-envelope" aria-hidden="true">
+	   	 				<%= current_user.email %></span>
+		   		</li>
+		   		<li class="list-group-item">
+		   	  		<span class="glyphicon glyphicon-phone" aria-hidden="true">
+		   	 			<%= current_user.phone %></span>
+		   	 	</li>
+		   		<li class="list-group-item">
+		   			<span class="glyphicon glyphicon-credit-card" aria-hidden="true">
+		   	 			Баланс: <%= current_user.balance %> rub</span>
+		   	 	</li>
+			  </ul>
 		  </div>
 		  	<ul class="list-group">
 			   	<li class="list-group-item">
-            <%= link_to profile_path do %>
-             	<span class="glyphicon glyphicon-cog"></span> Редактировать
-            <% end %>
-          </li>
+	          <%= link_to profile_path do %>
+	           	<span class="glyphicon glyphicon-cog"></span> Редактировать
+	          <% end %>
+	        </li>
 			  </ul>
 		</div>
 		<div class="col-md-8">
@@ -47,4 +48,7 @@
 			  </div>
 			</div>
 		</div>
+	<% else %>
+		<%= render "shader/unincluded" %>
+  <% end %>
 </div>

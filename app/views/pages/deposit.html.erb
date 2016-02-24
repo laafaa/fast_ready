@@ -1,1 +1,7 @@
-<h1>Страница пополнения баланса</h1>
+<div class = "container"> 
+    <% if user_signed_in? %>
+    	<h1>Страница пополнения баланса</h1>
+    <% else %>
+    	<%= render "shader/unincluded" %>
+    <% end %>
+</div>

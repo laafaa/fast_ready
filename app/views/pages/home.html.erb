@@ -11,7 +11,11 @@
                     <h4><i class="fa fa-fw fa-check"></i>Мгновенная</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                    <p>Для победы Вам потребуется только 4 шага:</p>
+                    <p>1. <%= link_to "Зарегистрироваться", new_user_registration_path %> или <%= link_to "войти в свой аккаунт", new_user_session_path %></p>
+                    <p>2. <%= link_to "Пополнить", deposit_path  %> баланс</p>
+                    <p>3. <%= link_to "Выбрать игру", game_path %> с интересующей вас ставкой</p>
+                    <p>4. Ожидание розыгрыша</p>
                 </div>
             </div>
         </div>
@@ -28,7 +32,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-compass"></i>Легок в использовании</h4>
+                    <h4><i class="fa fa-fw fa-compass"></i>Легкая в использовании</h4>
                 </div>
                 <div class="panel-body">
                     <p>Наш проект предоставляет простой и легкий сервис минимизирующий количество действий совершаемых пользователем.</p>

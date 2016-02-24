@@ -41,14 +41,7 @@
         </div>
   	</div>
   <% else %>
-		<div class="jumbotron">
-			<h1 class="text-center">Пройдите регистрацию, либо войдите в свой аккаунт.</h1>
-			<p class="text-center">Участвовать в лотерее могут только зарегистрированные пользователи, пожалуйста зарегистрируйтесь либо войдите в свой аккаунт.</p>
-				<div class="text-center">
-					<%= link_to 'Регистрация', new_user_registration_path, class: "btn btn-primary" %>
-		      <%= link_to 'Вход', new_user_session_path, class: "btn btn-success" %>
-				</div>
-		</div>
+		<%= render "shader/unincluded" %>
   <% end %>
   </div>
 </div>

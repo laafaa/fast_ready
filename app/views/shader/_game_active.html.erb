@@ -2,18 +2,21 @@
 	<% if (g.users.count)<=9 %>
 		<div class="col-md-4" >
 			<div class="panel panel-default" id="new_game">
-				<div class="panel-heading">
-					<h3 class="panel-title">Игра №<%= g.id %></h3>
-				</div>
 				<ul class="list-group">
+					<li class="list-group-item">
+						<span class="badge badge-warning"><%= link_to "Информация", {action: 'about_game', game: g.id }, :style => "color: white" %></span>
+						<h3 class="panel-title">Игра №<%= g.id %></h3>
+					</li>
 					<li class="list-group-item">
 							Ставка: <%= g.rate %> rub
 					</li>
 			   		<li class="list-group-item">
-						Участники:
-							<% (g.users.where('game_id = ?', g.id)).each do |gu|%>
-								<%= gu.login %>
-							<% end %>
+						Участники: <%= (g.users.count) %>/10
+						<div class="progress">
+						  <div div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow=<%= (g.users.count)*10 %> aria-valuemin="0" aria-valuemax="100" style="width: <%= (g.users.count)*10 %>%">
+						    <span class="sr-only"><%= (g.users.count)*10 %>% Complete (success)</span>
+						  </div>
+						</div>
 					</li>
 					<% if (g.users.where('user_id = ?', current_user.id)).count == 0 %>
 						<%= link_to "Учавствовать",  {action: 'add_player', id_game: g.id }, method: :post, :class => "list-group-item list-group-item-success text-center" %>

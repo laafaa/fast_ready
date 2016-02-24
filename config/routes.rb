@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   match '/deposit', to: 'pages#deposit', via: 'get'
   match '/withdraw', to: 'pages#withdraw', via: 'get'
   match '/schedule', to: 'pages#schedule', via: 'get'
+  match '/about_game', to: 'pages#about_game', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

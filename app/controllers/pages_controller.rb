@@ -56,6 +56,7 @@ class PagesController < ApplicationController
         flash[:game_full] = "Повторите попытку позже"
         redirect_to game_path
       end
+    else
       redirect_to game_path
     end
   end

@@ -1,4 +1,5 @@
 <div class="container">
+<% if user_signed_in? %>
 	<div class="col-md-4" >
 		<ul class="list-group">
 			<li class="list-group-item">
@@ -31,11 +32,14 @@
 			</li>
 			<% if (@game.users.count)<=9 %>
 				<% if (@game.users.where('user_id = ?', current_user.id)).count == 0 %>
-					<%= link_to "Учавствовать",  {action: 'add_player', id_game: g.id }, method: :post, :class => "list-group-item list-group-item-success text-center" %>
+					<%= link_to "Учавствовать",  {action: 'add_player', id_game: @game.id }, method: :post, :class => "list-group-item list-group-item-success text-center" %>
 				<% else %>
 					<li class="list-group-item list-group-item-danger text-center">Вы уже учавствуете</li>
 				<% end %>
 			<% end %>
 		</ul>	
 	</div>
+<% else %>
+	<%= render "shader/unincluded" %>
+<% end %>
 </div>

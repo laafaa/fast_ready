@@ -16,4 +16,10 @@ class User < ActiveRecord::Base
     message: " должен содержать только цифры" }
   validates :phone, :login, :email, uniqueness: { is: true, 
     message: "Уже используется"}
+
+  belongs_to :role
+
+  def admin?
+    role_id == 1
+  end
 end

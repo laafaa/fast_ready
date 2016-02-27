@@ -47,9 +47,8 @@ end
 
 gem 'devise'
 gem 'bootstrap-sass'
-gem 'cancan'
 gem 'rails_admin'
-
+gem 'cancancan', '~> 1.13', '>= 1.13.1'
 gem 'simple_form'
 
 

@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :users_roles
-  has_many :roles, :through => :users_roles
+ 
   has_many :user_transactions
   has_and_belongs_to_many :games
   

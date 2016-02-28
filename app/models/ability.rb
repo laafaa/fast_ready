@@ -9,5 +9,6 @@ class Ability
       can :manage, :all
     else
       can :read, :all 
+    end
   end
 end
